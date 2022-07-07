@@ -11,17 +11,31 @@ public class Ladowacz {
     private int licznikLiniiPlikuWejsciowego = 0;
     private int licznikDrzewPlikuWejsciowego = 0;
 
-    public Ladowacz(String[] args) {
+    public Ladowacz(String[] args) throws FileNotFoundException {
         wczytajPliki(args);
     }
 
-    private void wczytajPliki(String[] args) {
+    public File getPlikWejsciowy() {
+        return plikWejsciowy;
+    }
+
+    public File getPlikWyjsciowy() {
+        return plikWyjsciowy;
+    }
+
+    private void wczytajPliki(String[] args) throws FileNotFoundException {
         if(args.length < 2){
             System.out.println("Prosze podac plik wejsciowy i wyjsciowy.");
             System.exit(0);
         }
+
         plikWejsciowy = new File(args[0]);
         plikWyjsciowy = new File(args[1]);
+        if(!plikWejsciowy.canRead())
+            throw new FileNotFoundException("Nie można czytać z pliku wejściowego.");
+        if (!plikWyjsciowy.canWrite())
+            throw new FileNotFoundException("Nie można pisać do pliku wyjściowego.");
+
     }
 
     public ArrayList<DrzewoZRobakiem> wczytajZawartoscPlikuWejsciowego() {
