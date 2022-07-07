@@ -1,5 +1,6 @@
 package Algorytm;
 
+import Ruchy.Czolgacz;
 import StrukturyDanych.DrzewoZRobakiem;
 
 public class Algorytm {
@@ -9,9 +10,10 @@ public class Algorytm {
         this.drzewoZRobakiem = drzewoZRobakiem;
     }
 
-    public void wykonajAlgorytm(){
+    public void wykonajAlgorytm() {
 
-
+        Czolgacz czolgacz = new Czolgacz(drzewoZRobakiem);
+        czolgacz.czolgajSie();
 
     }
 

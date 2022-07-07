@@ -12,7 +12,7 @@ public class Pisacz {
         this.plikWyjsciowy = plikWyjsciowy;
     }
 
-    public void piszDoPliku (String... text) throws IOException {
+    public void piszDoPliku (String[] text) throws IOException {
         Writer writer = new BufferedWriter(new FileWriter(plikWyjsciowy));
         for (String s: text)
             writer.write(s + "\n");

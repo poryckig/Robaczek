@@ -1,8 +1,19 @@
 package Ruchy;
 
-public class ZwyklyRuch implements Ruch{
+import StrukturyDanych.DrzewoZRobakiem;
+
+import java.util.ArrayList;
+
+public class ZwyklyRuch implements Ruch {
+
+    private DrzewoZRobakiem drzewoZRobakiem;
+
+    public ZwyklyRuch(DrzewoZRobakiem drzewoZRobakiem) {
+        this.drzewoZRobakiem = drzewoZRobakiem;
+    }
+
     @Override
-    public void ruszSie() {
+    public void ruszSie(ArrayList<Integer> ruchy) {
 
     }
 

@@ -28,7 +28,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         try {
-            pisacz.piszDoPliku("ala", "ma", "kota");
+            pisacz.piszDoPliku(new String[]{"ala", "ma", "kota"});
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
