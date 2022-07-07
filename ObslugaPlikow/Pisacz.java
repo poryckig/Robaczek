@@ -1,3 +1,5 @@
+package ObslugaPlikow;
+
 import java.io.*;
 
 public class Pisacz {

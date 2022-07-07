@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package StrukturyDanych;
+
+import StrukturyDanych.Drzewo;
 
 public class DrzewoZRobakiem {
     private int a, b, c, d;

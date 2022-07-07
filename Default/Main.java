@@ -1,5 +1,10 @@
+package Default;
+
+import ObslugaPlikow.Ladowacz;
+import StrukturyDanych.DrzewoZRobakiem;
+import Algorytm.Algorytm;
+
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
@@ -16,9 +21,9 @@ public class Main {
             new Algorytm(drzewoZRobakiem).wykonajAlgorytm();
 
         /*
-        Pisacz pisacz = null;
+        ObslugaPlikow.Pisacz pisacz = null;
         try {
-            pisacz = new Pisacz(ladowacz.getPlikWyjsciowy());
+            pisacz = new ObslugaPlikow.Pisacz(ladowacz.getPlikWyjsciowy());
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

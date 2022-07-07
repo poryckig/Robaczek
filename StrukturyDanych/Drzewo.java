@@ -1,3 +1,5 @@
+package StrukturyDanych;
+
 import java.util.ArrayList;
 
 public class Drzewo {

@@ -1,3 +1,8 @@
+package ObslugaPlikow;
+
+import StrukturyDanych.Drzewo;
+import StrukturyDanych.DrzewoZRobakiem;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -161,7 +166,7 @@ public class Ladowacz {
                     + licznikDrzewPlikuWejsciowego + ". Linia: " + licznikLiniiPlikuWejsciowego + ".");
             System.exit(0);
         }
-        System.out.println("\nDrzewo nr: " + licznikDrzewPlikuWejsciowego);
+        System.out.println("\nStrukturyDanych.Drzewo nr: " + licznikDrzewPlikuWejsciowego);
         System.out.println("Liczba wierzcholkow drzewa: " + drzewo.getLiczbaWierzcholkow());
 
         return liczbaWierzcholkow;

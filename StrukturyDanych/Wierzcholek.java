@@ -1,3 +1,5 @@
+package StrukturyDanych;
+
 import java.util.ArrayList;
 
 public class Wierzcholek {
@@ -16,7 +18,7 @@ public class Wierzcholek {
         return this.nr;
     }
 
-    ArrayList<Integer> getSasiedzi(){
+    public ArrayList<Integer> getSasiedzi(){
         return this.sasiedzi;
     }
 }

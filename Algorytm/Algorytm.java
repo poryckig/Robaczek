@@ -1,3 +1,7 @@
+package Algorytm;
+
+import StrukturyDanych.DrzewoZRobakiem;
+
 public class Algorytm {
 
     private DrzewoZRobakiem drzewoZRobakiem;
