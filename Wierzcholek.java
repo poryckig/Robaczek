@@ -6,17 +6,11 @@ public class Wierzcholek {
 
     public Wierzcholek(int nr){
         this.nr = nr;
-
     }
     public Wierzcholek(int nr, ArrayList<Integer> sasiedzi){
         this.nr = nr;
         this.sasiedzi = sasiedzi;
     }
-
-
-
-
-
 
     int getNr(){
         return this.nr;

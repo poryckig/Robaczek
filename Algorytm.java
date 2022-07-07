@@ -1,10 +1,11 @@
 public class Algorytm {
 
-    public Algorytm(int a, int b, int c, int d){
-        wykonajAlgorytm(a, b, c, d);
+    private DrzewoZRobakiem drzewoZRobakiem;
+    public Algorytm(DrzewoZRobakiem drzewoZRobakiem){
+        this.drzewoZRobakiem = drzewoZRobakiem;
     }
 
-    private void wykonajAlgorytm(int a, int b, int c, int d){
+    public void wykonajAlgorytm(){
 
 
 
