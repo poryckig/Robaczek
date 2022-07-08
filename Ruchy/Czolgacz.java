@@ -18,7 +18,7 @@ public class Czolgacz {
     }
 
     public void czolgajSie() {
-        LinkedList<Integer> droga = new LinkedList<>(); // metoda
+        LinkedList<Integer> droga = new LinkedList<>(); // metoda BFS.getDroga()
         boolean czyZmienionoStrony = false;
 
         while (!drzewoZRobakiem.czyDotarlDoCelu()) {

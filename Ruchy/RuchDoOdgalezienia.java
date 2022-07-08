@@ -16,18 +16,28 @@ public class RuchDoOdgalezienia implements Ruch {
     @Override
     public boolean ruszSie(LinkedList<Integer> ruchy, LinkedList<Integer> droga) {
 
-        int nastepnyWierzcholek = 0; //BFS.getWierzcholekDoNajdluzszegoOdgalezenia();
-        if (nastepnyWierzcholek == -1)
+        ArrayList<Integer> najdluzszeOdgalezienie = new ArrayList<>(); //BFS.getNajdluzszeOdgalezienie()
+
+        if (najdluzszeOdgalezienie.size() == 0)
             return false;
+        while (true) {
+            int dlugosc = najdluzszeOdgalezienie.size();
+            if (dlugosc == 0)
+                break;
 
-        drzewoZRobakiem.ruszSieDoTylu(nastepnyWierzcholek);
-        ruchy.add(nastepnyWierzcholek);
+            // ruch do tylu
+            int nastepnyWierzcholek = najdluzszeOdgalezienie.remove(dlugosc-1);
+            drzewoZRobakiem.ruszSieDoTylu(nastepnyWierzcholek);
+            ruchy.add(nastepnyWierzcholek);
 
-        int pierwszyWierzcholekDrogi = droga.peek();
-        int przod = drzewoZRobakiem.getPrzod();
-        if (przod == pierwszyWierzcholekDrogi)
-            droga.remove();
-
+            // sprawdz czy robak cofnal sie do kontynuowania drogi
+            int pierwszyWierzcholekDrogi = droga.peek();
+            int przod = drzewoZRobakiem.getPrzod();
+            if (przod == pierwszyWierzcholekDrogi) {
+                droga.remove();
+                break;
+            }
+        }
         return true;
     }
 }
