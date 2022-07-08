@@ -3,6 +3,7 @@ package Ruchy;
 import StrukturyDanych.DrzewoZRobakiem;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ZwyklyRuch implements Ruch {
 
@@ -13,12 +14,12 @@ public class ZwyklyRuch implements Ruch {
     }
 
     @Override
-    public void ruszSie(ArrayList<Integer> ruchy) {
+    public void ruszSie(ArrayList<Integer> ruchy, LinkedList<Integer> droga) {
 
     }
 
     @Override
-    public boolean czyRuchMozliwy() {
+    public boolean czyRuchMozliwy(LinkedList<Integer> droga) {
         return false;
     }
 }
