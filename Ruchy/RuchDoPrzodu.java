@@ -2,14 +2,13 @@ package Ruchy;
 
 import StrukturyDanych.DrzewoZRobakiem;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class ZwyklyRuch implements Ruch {
+public class RuchDoPrzodu implements Ruch {
 
     private DrzewoZRobakiem drzewoZRobakiem;
 
-    public ZwyklyRuch(DrzewoZRobakiem drzewoZRobakiem) {
+    public RuchDoPrzodu(DrzewoZRobakiem drzewoZRobakiem) {
         this.drzewoZRobakiem = drzewoZRobakiem;
     }
 

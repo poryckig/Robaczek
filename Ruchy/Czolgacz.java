@@ -2,7 +2,6 @@ package Ruchy;
 
 import StrukturyDanych.DrzewoZRobakiem;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Czolgacz {
@@ -13,7 +12,7 @@ public class Czolgacz {
 
     public Czolgacz(DrzewoZRobakiem drzewoZRobakiem) {
         this.drzewoZRobakiem = drzewoZRobakiem;
-        zwyklyRuch = new ZwyklyRuch(drzewoZRobakiem);
+        zwyklyRuch = new RuchDoPrzodu(drzewoZRobakiem);
         ruchDoOdgalezienia = new RuchDoOdgalezienia(drzewoZRobakiem);
     }
 
