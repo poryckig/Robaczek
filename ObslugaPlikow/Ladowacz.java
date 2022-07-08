@@ -29,18 +29,15 @@ public class Ladowacz {
     }
 
     private void wczytajPliki(String[] args) throws FileNotFoundException {
-        if(args.length < 2){
-            System.out.println("Prosze podac plik wejsciowy i wyjsciowy.");
-            System.exit(0);
+
+        if (args.length >= 2) {
+            plikWejsciowy = new File(args[0]);
+            plikWyjsciowy = new File(args[1]);
+            if (!plikWejsciowy.canRead())
+                throw new FileNotFoundException("Nie można czytać z pliku wejściowego.");
+            if (!plikWyjsciowy.canWrite())
+                throw new FileNotFoundException("Nie można pisać do pliku wyjściowego.");
         }
-
-        plikWejsciowy = new File(args[0]);
-        plikWyjsciowy = new File(args[1]);
-        if(!plikWejsciowy.canRead())
-            throw new FileNotFoundException("Nie można czytać z pliku wejściowego.");
-        if (!plikWyjsciowy.canWrite())
-            throw new FileNotFoundException("Nie można pisać do pliku wyjściowego.");
-
     }
 
     public ArrayList<DrzewoZRobakiem> wczytajZawartoscPlikuWejsciowego() {
@@ -62,11 +59,15 @@ public class Ladowacz {
 
     private Scanner otworzScanner(File plik) {
         Scanner scanner;
-        try {
-            scanner = new Scanner(plik);
-        } catch (FileNotFoundException e) {
-            System.out.println("Blad: Podano bledny plik wejsciowy.");
-            throw new RuntimeException(e);
+        if (plik == null)
+            scanner = new Scanner(System.in);
+        else {
+            try {
+                scanner = new Scanner(plik);
+            } catch (FileNotFoundException e) {
+                System.out.println("Blad: Podano bledny plik wejsciowy.");
+                throw new RuntimeException(e);
+            }
         }
         return scanner;
     }

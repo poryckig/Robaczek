@@ -13,7 +13,7 @@ public class Algorytm {
     public void wykonajAlgorytm() {
 
         Czolgacz czolgacz = new Czolgacz(drzewoZRobakiem);
-        czolgacz.czolgajSie();
+        //czolgacz.czolgajSie();
 
     }
 

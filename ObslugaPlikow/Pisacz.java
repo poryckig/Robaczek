@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Pisacz {
 
-    File plikWyjsciowy;
+    private File plikWyjsciowy;
 
     public Pisacz (File plikWyjsciowy) throws FileNotFoundException {
         if (!plikWyjsciowy.canWrite())
@@ -13,7 +13,11 @@ public class Pisacz {
     }
 
     public void piszDoPliku (String[] text) throws IOException {
-        Writer writer = new BufferedWriter(new FileWriter(plikWyjsciowy));
+        Writer writer;
+        if (plikWyjsciowy == null)
+            writer = new OutputStreamWriter(System.out);
+        else
+            writer = new BufferedWriter(new FileWriter(plikWyjsciowy));
         for (String s: text)
             writer.write(s + "\n");
         writer.close();
