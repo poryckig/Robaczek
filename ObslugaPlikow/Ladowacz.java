@@ -50,7 +50,9 @@ public class Ladowacz {
         for (int i = 0; i < liczbaDrzew; i++) {
             Drzewo drzewo = wczytajDrzewo(scannerPlikWejsciowy);
             int[] abcd = wczytajWierzcholkiABCD(scannerPlikWejsciowy, drzewo);
+            System.out.println("t1");
             drzewaZRobakiem.add(new DrzewoZRobakiem(drzewo, abcd));
+            System.out.println("t1");
         }
 
         scannerPlikWejsciowy.close();

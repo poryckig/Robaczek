@@ -1,5 +1,9 @@
 package StrukturyDanych;
 
+import WyznaczanieDrogi.BFS;
+
+import java.util.LinkedList;
+
 public class DrzewoZRobakiem {
 
     //robak[0] - tyl, robak[2] - przod
@@ -9,7 +13,10 @@ public class DrzewoZRobakiem {
 
     public DrzewoZRobakiem(Drzewo drzewo, int[] abcd) {
         this.drzewo = drzewo;
-        //BFS.utworzRobaka(robak, new int[]{abcd[0], abcd[2]});
+        System.out.println("t2");
+        LinkedList<Integer> wyznaczonyRobak = new BFS(drzewo, abcd[0]).wyznaczNajkrotszaDroge(abcd[1]);
+        System.out.println("t2");
+        robak = wyznaczonyRobak.stream().mapToInt(e -> e).toArray();
         docelowyPrzod = abcd[2];
         docelowyTyl = abcd[3];
     }

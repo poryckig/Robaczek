@@ -1,5 +1,6 @@
-package BFS;
+package WyznaczanieDrogi;
 
+import StrukturyDanych.Drzewo;
 import StrukturyDanych.DrzewoZRobakiem;
 import StrukturyDanych.Wierzcholek;
 
@@ -8,7 +9,7 @@ import java.util.LinkedList;
 
 public class BFS {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
+    private Drzewo drzewo;
     private int poczatek;
     private int liczbaWierzcholkow;
     private int[] poprzedniki;
@@ -16,8 +17,8 @@ public class BFS {
     private boolean[] czyOdwiedzono;
     private LinkedList<Integer> kolejka;
 
-    public BFS(DrzewoZRobakiem drzewoZRobakiem, int poczatek) {
-        this.drzewoZRobakiem = drzewoZRobakiem;
+    public BFS(Drzewo drzewo, int poczatek) {
+        this.drzewo = drzewo;
         this.poczatek = poczatek;
         inicjujWartosciPoczatkowe();
         wykonajBFS();
@@ -31,7 +32,7 @@ public class BFS {
     }
 
     private void inicjujWartosciPoczatkowe() {
-        liczbaWierzcholkow = drzewoZRobakiem.getDrzewo().getLiczbaWierzcholkow();
+        liczbaWierzcholkow = drzewo.getLiczbaWierzcholkow();
         poprzedniki = new int[liczbaWierzcholkow];
         odleglosciDoWierzcholkow = new int[liczbaWierzcholkow];
         czyOdwiedzono = new boolean[liczbaWierzcholkow];
@@ -50,8 +51,9 @@ public class BFS {
 
     private void wykonajBFS() {
         while (!kolejka.isEmpty()) {
+            System.out.println("c");
             int numerAktualnegoWierzcholka = kolejka.remove();
-            ArrayList<Wierzcholek> graf = drzewoZRobakiem.getDrzewo().getGraf();
+            ArrayList<Wierzcholek> graf = drzewo.getGraf();
             Wierzcholek aktualnyWierzcholek = graf.get(numerAktualnegoWierzcholka-1);
             ArrayList<Integer> sasiedzi = aktualnyWierzcholek.getSasiedzi();
 

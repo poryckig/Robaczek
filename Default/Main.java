@@ -17,6 +17,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         ArrayList<DrzewoZRobakiem> drzewaZRobakiem = ladowacz.wczytajZawartoscPlikuWejsciowego();
+        System.out.println("c");
         for (DrzewoZRobakiem drzewoZRobakiem: drzewaZRobakiem)
             new Algorytm(drzewoZRobakiem).wykonajAlgorytm();
 
