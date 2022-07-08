@@ -1,8 +1,9 @@
 package StrukturyDanych;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Drzewo {
+public class Drzewo implements Iterable{
     private int liczbaWierzcholkow;
     private ArrayList<Wierzcholek> graf;
 
@@ -25,6 +26,8 @@ public class Drzewo {
         return this.graf;
     }
 
-
-
+    @Override
+    public Iterator iterator() {
+        return graf.iterator();
+    }
 }

@@ -1,5 +1,6 @@
 package Ruchy;
 
+import BFS.BFS;
 import StrukturyDanych.DrzewoZRobakiem;
 
 import java.util.LinkedList;
@@ -17,9 +18,11 @@ public class Czolgacz {
     }
 
     public void czolgajSie() {
-        LinkedList<Integer> droga = new LinkedList<>(); // metoda BFS.getDroga()
-        boolean czyZmienionoStrony = false;
+        int poczatek = drzewoZRobakiem.getPrzod();
+        int koniec = drzewoZRobakiem.getDocelowyPrzod();
+        LinkedList<Integer> droga = new BFS(drzewoZRobakiem, poczatek).wyznaczNajkrotszaDroge(koniec);
 
+        boolean czyZmienionoStrony = false;
         while (!drzewoZRobakiem.czyDotarlDoCelu()) {
             if (!zwyklyRuch.ruszSie(ruchy, droga) && !ruchDoOdgalezienia.ruszSie(ruchy, droga))
                 break;
