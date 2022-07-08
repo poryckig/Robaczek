@@ -14,12 +14,20 @@ public class RuchDoOdgalezienia implements Ruch {
     }
 
     @Override
-    public void ruszSie(ArrayList<Integer> ruchy, LinkedList<Integer> droga) {
+    public boolean ruszSie(LinkedList<Integer> ruchy, LinkedList<Integer> droga) {
 
-    }
+        int nastepnyWierzcholek = 0; //BFS.getWierzcholekDoNajdluzszegoOdgalezenia();
+        if (nastepnyWierzcholek == -1)
+            return false;
 
-    @Override
-    public boolean czyRuchMozliwy(LinkedList<Integer> droga) {
-        return false;
+        drzewoZRobakiem.ruszSieDoTylu(nastepnyWierzcholek);
+        ruchy.add(nastepnyWierzcholek);
+
+        int pierwszyWierzcholekDrogi = droga.peek();
+        int przod = drzewoZRobakiem.getPrzod();
+        if (przod == pierwszyWierzcholekDrogi)
+            droga.remove();
+
+        return true;
     }
 }

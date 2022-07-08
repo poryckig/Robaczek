@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class Czolgacz {
 
     private DrzewoZRobakiem drzewoZRobakiem;
-    private ArrayList<Integer> ruchy = new ArrayList<>();
+    private LinkedList<Integer> ruchy = new LinkedList<>();
     private Ruch zwyklyRuch, ruchDoOdgalezienia;
 
     public Czolgacz(DrzewoZRobakiem drzewoZRobakiem) {
@@ -22,13 +22,9 @@ public class Czolgacz {
         boolean czyZmienionoStrony = false;
 
         while (!drzewoZRobakiem.czyDotarlDoCelu()) {
-            if (zwyklyRuch.czyRuchMozliwy(droga))
-                zwyklyRuch.ruszSie(ruchy, droga);
-            else if (ruchDoOdgalezienia.czyRuchMozliwy(droga))
-                ruchDoOdgalezienia.ruszSie(ruchy, droga);
-            else
+            if (!zwyklyRuch.ruszSie(ruchy, droga) && !ruchDoOdgalezienia.ruszSie(ruchy, droga))
                 break;
-            if (!czyZmienionoStrony && drzewoZRobakiem.czyTylemDotarlDoCelu()) {
+            if (!czyZmienionoStrony && drzewoZRobakiem.czyDotarlPrzodemDoCelu()) {
                 czyZmienionoStrony = true;
                 drzewoZRobakiem.zmienKierunekRobaka();
             }

@@ -14,12 +14,15 @@ public class ZwyklyRuch implements Ruch {
     }
 
     @Override
-    public void ruszSie(ArrayList<Integer> ruchy, LinkedList<Integer> droga) {
+    public boolean ruszSie(LinkedList<Integer> ruchy, LinkedList<Integer> droga) {
 
-    }
+        int nastepnyWierzcholek = droga.peek();
+        if (nastepnyWierzcholek == drzewoZRobakiem.getWierzcholekRobakaPrzedPrzodem())
+            return false;
 
-    @Override
-    public boolean czyRuchMozliwy(LinkedList<Integer> droga) {
-        return false;
+        droga.remove();
+        drzewoZRobakiem.ruszSieDoPrzodu(nastepnyWierzcholek);
+        ruchy.add(nastepnyWierzcholek);
+        return true;
     }
 }
