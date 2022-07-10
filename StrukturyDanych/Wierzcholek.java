@@ -3,7 +3,7 @@ package StrukturyDanych;
 import java.util.ArrayList;
 
 public class Wierzcholek {
-    private int nr;
+    private final int nr;
     private ArrayList<Integer> sasiedzi = new ArrayList<>();
 
     public Wierzcholek(int nr){

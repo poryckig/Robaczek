@@ -1,11 +1,10 @@
 package StrukturyDanych;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-public class Drzewo implements Iterable{
-    private int liczbaWierzcholkow;
-    private ArrayList<Wierzcholek> graf;
+public class Drzewo {
+    private final int liczbaWierzcholkow;
+    private final ArrayList<Wierzcholek> graf;
 
     public Drzewo(int liczbaWierzcholkow){
         this.liczbaWierzcholkow = liczbaWierzcholkow;
@@ -24,10 +23,5 @@ public class Drzewo implements Iterable{
 
     public ArrayList<Wierzcholek> getGraf(){
         return this.graf;
-    }
-
-    @Override
-    public Iterator iterator() {
-        return graf.iterator();
     }
 }

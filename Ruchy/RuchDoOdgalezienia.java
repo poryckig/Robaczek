@@ -3,12 +3,11 @@ package Ruchy;
 import StrukturyDanych.DrzewoZRobakiem;
 import WyznaczanieDrogi.BFSNajdluzszaDroga;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class RuchDoOdgalezienia implements Ruch {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
+    private final DrzewoZRobakiem drzewoZRobakiem;
 
     public RuchDoOdgalezienia(DrzewoZRobakiem drzewoZRobakiem) {
         this.drzewoZRobakiem = drzewoZRobakiem;

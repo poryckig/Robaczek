@@ -4,13 +4,12 @@ import StrukturyDanych.DrzewoZRobakiem;
 import StrukturyDanych.Wierzcholek;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class BFSNajdluzszaDroga {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
-    private int poczatek;
+    private final DrzewoZRobakiem drzewoZRobakiem;
+    private final int poczatek;
     private int liczbaWierzcholkow;
     private int[] poprzedniki;
     private int[] odleglosciDoWierzcholkow;
@@ -44,18 +43,17 @@ public class BFSNajdluzszaDroga {
 
     private void wykonajBFS() {
         while (!kolejka.isEmpty()) {
-            int numerAktualnegoWierzcholka = kolejka.remove();;
+            int numerAktualnegoWierzcholka = kolejka.remove();
             ArrayList<Wierzcholek> graf = drzewoZRobakiem.getDrzewo().getGraf();
             Wierzcholek aktualnyWierzcholek = graf.get(numerAktualnegoWierzcholka-1);
             ArrayList<Integer> sasiedzi = aktualnyWierzcholek.getSasiedzi();
 
-            for (int i = 0; i < sasiedzi.size(); i++) {
-                int numerAktualnegoSasiada = sasiedzi.get(i);
-                if (!czyOdwiedzono[numerAktualnegoSasiada-1] && drzewoZRobakiem.czyRobakLezyNaWierzcholku(numerAktualnegoSasiada-1)) {
-                    czyOdwiedzono[numerAktualnegoSasiada-1] = true;
-                    odleglosciDoWierzcholkow[numerAktualnegoSasiada-1] =
-                            odleglosciDoWierzcholkow[numerAktualnegoWierzcholka-1] + 1;
-                    poprzedniki[numerAktualnegoSasiada-1] = numerAktualnegoWierzcholka;
+            for (int numerAktualnegoSasiada : sasiedzi) {
+                if (!czyOdwiedzono[numerAktualnegoSasiada - 1] && drzewoZRobakiem.czyRobakLezyNaWierzcholku(numerAktualnegoSasiada - 1)) {
+                    czyOdwiedzono[numerAktualnegoSasiada - 1] = true;
+                    odleglosciDoWierzcholkow[numerAktualnegoSasiada - 1] =
+                            odleglosciDoWierzcholkow[numerAktualnegoWierzcholka - 1] + 1;
+                    poprzedniki[numerAktualnegoSasiada - 1] = numerAktualnegoWierzcholka;
                     kolejka.add(numerAktualnegoSasiada);
                 }
             }

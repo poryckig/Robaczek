@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class Pisacz {
 
-    private File plikWyjsciowy;
-    private ArrayList<RuchyInfo> ruchyInfo;
+    private final File plikWyjsciowy;
+    private final ArrayList<RuchyInfo> ruchyInfo;
 
     public Pisacz (File plikWyjsciowy, ArrayList<RuchyInfo> ruchyInfo) throws FileNotFoundException {
         if (plikWyjsciowy != null && !plikWyjsciowy.canWrite())
@@ -33,11 +33,10 @@ public class Pisacz {
 
         for (RuchyInfo ruchInfo: ruchyInfo) {
             int liczbaRuchow = ruchInfo.getLiczbaRuchow();
-            writer.append(liczbaRuchow + "\n");
+            writer.append(String.valueOf(liczbaRuchow)).append("\n");
             if (liczbaRuchow != -1)
-                writer.append(ruchInfo.getKolejnoscRuchow() + "\n");
+                writer.append(ruchInfo.getKolejnoscRuchow()).append("\n");
         }
-
         writer.flush();
     }
 

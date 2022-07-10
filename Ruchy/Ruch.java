@@ -1,6 +1,5 @@
 package Ruchy;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public interface Ruch {

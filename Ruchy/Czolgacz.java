@@ -7,9 +7,9 @@ import java.util.LinkedList;
 
 public class Czolgacz {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
-    private LinkedList<Integer> ruchy;
-    private Ruch zwyklyRuch, ruchDoOdgalezienia;
+    private final DrzewoZRobakiem drzewoZRobakiem;
+    private final LinkedList<Integer> ruchy;
+    private final Ruch zwyklyRuch, ruchDoOdgalezienia;
 
     public Czolgacz(DrzewoZRobakiem drzewoZRobakiem) {
         this.drzewoZRobakiem = drzewoZRobakiem;
@@ -46,7 +46,7 @@ public class Czolgacz {
     public String getKolejnoscRuchow() {
         StringBuilder sb = new StringBuilder();
         if (getLiczbaRuchow() != -1)
-            ruchy.forEach(r -> sb.append(r + " "));
+            ruchy.forEach(r -> sb.append(r).append(" "));
         return sb.toString();
     }
 }

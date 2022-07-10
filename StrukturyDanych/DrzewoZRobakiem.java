@@ -10,7 +10,7 @@ public class DrzewoZRobakiem {
     //robak[0] - tyl, robak[2] - przod
     private int[] robak;
     private int docelowyPrzod, docelowyTyl;
-    private Drzewo drzewo;
+    private final Drzewo drzewo;
 
     public DrzewoZRobakiem(Drzewo drzewo, int[] abcd) {
         this.drzewo = drzewo;
@@ -39,8 +39,7 @@ public class DrzewoZRobakiem {
     public void zmienKierunekRobaka() {
         int[] robakTmp = new int[robak.length];
         int j = robak.length;
-        for (int i = 0; i < robak.length; i++)
-            robakTmp[--j] = robak[i];
+        for (int k : robak) robakTmp[--j] = k;
         robak = robakTmp;
     }
 
@@ -57,14 +56,12 @@ public class DrzewoZRobakiem {
     public boolean czyDotarlDoCelu() { return czyDotarlTylemDoCelu() && czyDotarlPrzodemDoCelu(); }
 
     public void ruszSieDoTylu(int nowyWierzcholek) {
-        for (int i = robak.length-1; i > 0; i--)
-            robak[i] = robak[i-1];
+        if (robak.length - 1 >= 0) System.arraycopy(robak, 0, robak, 1, robak.length - 1);
         robak[0] = nowyWierzcholek;
     }
 
     public void ruszSieDoPrzodu(int nowyWierzcholek) {
-        for (int i = 1; i < robak.length; i++)
-            robak[i-1] = robak[i];
+        if (robak.length - 1 >= 0) System.arraycopy(robak, 1, robak, 0, robak.length - 1);
         robak[robak.length-1] = nowyWierzcholek;
     }
 

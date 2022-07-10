@@ -2,8 +2,8 @@ package StrukturyDanych;
 
 public class RuchyInfo {
 
-    private int liczbaRuchow;
-    private String kolejnoscRuchow;
+    private final int liczbaRuchow;
+    private final String kolejnoscRuchow;
 
     public RuchyInfo (int liczbaRuchow, String kolejnoscRuchow) {
         this.liczbaRuchow = liczbaRuchow;

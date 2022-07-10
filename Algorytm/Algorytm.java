@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class Algorytm {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
+    private final DrzewoZRobakiem drzewoZRobakiem;
 
     public Algorytm(DrzewoZRobakiem drzewoZRobakiem){
         this.drzewoZRobakiem = drzewoZRobakiem;

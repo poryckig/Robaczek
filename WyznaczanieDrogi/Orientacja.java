@@ -7,7 +7,7 @@ import java.util.LinkedList;
 
 public class Orientacja {
 
-    private DrzewoZRobakiem drzewoZRobakiem;
+    private final DrzewoZRobakiem drzewoZRobakiem;
     private LinkedList<Integer> drogaPrzodPrzod, drogaPrzodTyl, drogaTylPrzod, drogaTylTyl;
 
     public Orientacja(DrzewoZRobakiem drzewoZRobakiem) {
