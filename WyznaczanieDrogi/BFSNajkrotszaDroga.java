@@ -1,13 +1,12 @@
 package WyznaczanieDrogi;
 
 import StrukturyDanych.Drzewo;
-import StrukturyDanych.DrzewoZRobakiem;
 import StrukturyDanych.Wierzcholek;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class BFS {
+public class BFSNajkrotszaDroga {
 
     private Drzewo drzewo;
     private int poczatek;
@@ -17,18 +16,11 @@ public class BFS {
     private boolean[] czyOdwiedzono;
     private LinkedList<Integer> kolejka;
 
-    public BFS(Drzewo drzewo, int poczatek) {
+    public BFSNajkrotszaDroga(Drzewo drzewo, int poczatek) {
         this.drzewo = drzewo;
         this.poczatek = poczatek;
         inicjujWartosciPoczatkowe();
         wykonajBFS();
-    }
-
-    public LinkedList<Integer> wyznaczNajkrotszaDroge(int koniec) {
-
-        LinkedList<Integer> odwroconaDroga = wyznaczDrogeZPoprzednikow(koniec);
-        LinkedList<Integer> prawidlowaDroga = odwrocDroge(odwroconaDroga);
-        return prawidlowaDroga;
     }
 
     private void inicjujWartosciPoczatkowe() {
@@ -44,15 +36,14 @@ public class BFS {
             poprzedniki[i] = -1;
         }
 
-        czyOdwiedzono[poczatek] = true;
-        odleglosciDoWierzcholkow[poczatek] = 0;
+        czyOdwiedzono[poczatek-1] = true;
+        odleglosciDoWierzcholkow[poczatek-1] = 0;
         kolejka.add(poczatek);
     }
 
     private void wykonajBFS() {
         while (!kolejka.isEmpty()) {
-            System.out.println("c");
-            int numerAktualnegoWierzcholka = kolejka.remove();
+            int numerAktualnegoWierzcholka = kolejka.remove();;
             ArrayList<Wierzcholek> graf = drzewo.getGraf();
             Wierzcholek aktualnyWierzcholek = graf.get(numerAktualnegoWierzcholka-1);
             ArrayList<Integer> sasiedzi = aktualnyWierzcholek.getSasiedzi();
@@ -70,21 +61,13 @@ public class BFS {
         }
     }
 
-    private LinkedList<Integer> wyznaczDrogeZPoprzednikow(int koniec) {
-        LinkedList<Integer> odwroconaDroga = new LinkedList<>();
-        int aktualnyWierzcholek = koniec;
-        odwroconaDroga.add(aktualnyWierzcholek);
-        while ((aktualnyWierzcholek = poprzedniki[aktualnyWierzcholek]) != -1)
-            odwroconaDroga.add(aktualnyWierzcholek);
-        return odwroconaDroga;
-    }
+    public LinkedList<Integer> wyznaczNajkrotszaDroge(int koniec) {
 
-    private LinkedList<Integer> odwrocDroge(LinkedList<Integer> odwroconaDroga) {
-        LinkedList<Integer> prawidlowaDroga = new LinkedList<>();
-        for (int element: odwroconaDroga) {
-            int pobranyElement = odwroconaDroga.remove(odwroconaDroga.size()-1);
-            prawidlowaDroga.add(pobranyElement);
-        }
-        return prawidlowaDroga;
+        LinkedList<Integer> droga = new LinkedList<>();
+        int aktualnyWierzcholek = koniec;
+        droga.add(aktualnyWierzcholek);
+        while ((aktualnyWierzcholek = poprzedniki[aktualnyWierzcholek-1]) != -1)
+            droga.add(0, aktualnyWierzcholek);
+        return droga;
     }
 }

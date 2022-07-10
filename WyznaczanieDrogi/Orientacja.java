@@ -9,16 +9,16 @@ public class Orientacja {
 
     private DrzewoZRobakiem drzewoZRobakiem;
     private LinkedList<Integer> drogaPrzodPrzod, drogaPrzodTyl, drogaTylPrzod, drogaTylTyl;
-    public LinkedList<Integer> getDrogaDlaRobaka() { return drogaPrzodPrzod; }
 
     public Orientacja(DrzewoZRobakiem drzewoZRobakiem) {
         this.drzewoZRobakiem = drzewoZRobakiem;
     }
 
+    public LinkedList<Integer> getDrogaDlaRobaka() { return drogaPrzodPrzod; }
     public  void wyznaczOrientacjeRobaka() {
         Drzewo drzewo = drzewoZRobakiem.getDrzewo();
-        BFS odPrzodu = new BFS(drzewo, drzewoZRobakiem.getDocelowyPrzod());
-        BFS odTylu = new BFS(drzewo, drzewoZRobakiem.getDocelowyTyl());
+        BFSNajkrotszaDroga odPrzodu = new BFSNajkrotszaDroga(drzewo, drzewoZRobakiem.getPrzod());
+        BFSNajkrotszaDroga odTylu = new BFSNajkrotszaDroga(drzewo, drzewoZRobakiem.getTyl());
 
         drogaPrzodPrzod = odPrzodu.wyznaczNajkrotszaDroge(drzewoZRobakiem.getDocelowyPrzod());
         drogaPrzodTyl = odPrzodu.wyznaczNajkrotszaDroge(drzewoZRobakiem.getDocelowyTyl());

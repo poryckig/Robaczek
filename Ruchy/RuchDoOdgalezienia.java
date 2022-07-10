@@ -1,6 +1,7 @@
 package Ruchy;
 
 import StrukturyDanych.DrzewoZRobakiem;
+import WyznaczanieDrogi.BFSNajdluzszaDroga;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -16,7 +17,7 @@ public class RuchDoOdgalezienia implements Ruch {
     @Override
     public boolean ruszSie(LinkedList<Integer> ruchy, LinkedList<Integer> droga) {
 
-        ArrayList<Integer> najdluzszeOdgalezienie = new ArrayList<>(); //BFS.getNajdluzszeOdgalezienie()
+        LinkedList<Integer> najdluzszeOdgalezienie = new BFSNajdluzszaDroga(drzewoZRobakiem, drzewoZRobakiem.getTyl()).wyznaczNajdluzszaDroge();
 
         if (najdluzszeOdgalezienie.size() == 0)
             return false;
@@ -26,7 +27,7 @@ public class RuchDoOdgalezienia implements Ruch {
                 break;
 
             // ruch do tylu
-            int nastepnyWierzcholek = najdluzszeOdgalezienie.remove(dlugosc-1);
+            int nastepnyWierzcholek = najdluzszeOdgalezienie.poll();
             drzewoZRobakiem.ruszSieDoTylu(nastepnyWierzcholek);
             ruchy.add(nastepnyWierzcholek);
 

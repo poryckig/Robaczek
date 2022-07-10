@@ -10,11 +10,13 @@ import java.util.Scanner;
 
 public class Ladowacz {
 
-    private File plikWejsciowy;
-    private File plikWyjsciowy;
+    private File plikWejsciowy = null;
+    private File plikWyjsciowy = null;
 
     private int licznikLiniiPlikuWejsciowego = 0;
     private int licznikDrzewPlikuWejsciowego = 0;
+
+    private StringBuilder stringBuilder = new StringBuilder();
 
     public Ladowacz(String[] args) throws FileNotFoundException {
         wczytajPliki(args);
@@ -30,7 +32,12 @@ public class Ladowacz {
 
     private void wczytajPliki(String[] args) throws FileNotFoundException {
 
-        if (args.length >= 2) {
+        if (args.length == 1) {
+            plikWejsciowy = new File(args[0]);
+            if (!plikWejsciowy.canRead())
+                throw new FileNotFoundException("Nie można czytać z pliku wejściowego.");
+        }
+        else if (args.length > 1) {
             plikWejsciowy = new File(args[0]);
             plikWyjsciowy = new File(args[1]);
             if (!plikWejsciowy.canRead())
@@ -50,9 +57,7 @@ public class Ladowacz {
         for (int i = 0; i < liczbaDrzew; i++) {
             Drzewo drzewo = wczytajDrzewo(scannerPlikWejsciowy);
             int[] abcd = wczytajWierzcholkiABCD(scannerPlikWejsciowy, drzewo);
-            System.out.println("t1");
             drzewaZRobakiem.add(new DrzewoZRobakiem(drzewo, abcd));
-            System.out.println("t1");
         }
 
         scannerPlikWejsciowy.close();
@@ -75,6 +80,7 @@ public class Ladowacz {
     }
 
     private int wczytajLiczbeDrzew(Scanner scannerPlikWejsciowy) {
+        stringBuilder.append("\n");
         int liczbaDrzew = scannerPlikWejsciowy.nextInt();
         licznikLiniiPlikuWejsciowego++;
         if (scannerPlikWejsciowy.hasNextLine()) scannerPlikWejsciowy.nextLine();
@@ -82,7 +88,7 @@ public class Ladowacz {
             System.out.println("Blad: Podano liczbe drzew nie mieszczaca sie w zakresie. Linia: " + licznikLiniiPlikuWejsciowego + ".");
             System.exit(0);
         }
-        System.out.println("Liczba drzew: " + liczbaDrzew);///////////
+        stringBuilder.append("Liczba drzew: " + liczbaDrzew);
         return liczbaDrzew;
     }
 
@@ -91,7 +97,7 @@ public class Ladowacz {
         int liczbaWierzcholkow = wczytajLiczbeWierzcholkowDrzewa(scanner);
         Drzewo drzewo = new Drzewo(liczbaWierzcholkow);
 
-        System.out.println("Krawedzie: ");
+        stringBuilder.append("Krawedzie: ");
         for(int k=0; k<drzewo.getLiczbaWierzcholkow() - 1; k++)
             wczytajKrawedz(scanner, drzewo);
 
@@ -114,7 +120,7 @@ public class Ladowacz {
             System.exit(0);
         }
 
-        System.out.println(u + " " + v);
+        stringBuilder.append(u + " " + v);
 
         if (!drzewo.getGraf().get(u - 1).getSasiedzi().contains(v) && !drzewo.getGraf().get(v - 1).getSasiedzi().contains(u)) {
             drzewo.getGraf().get(u - 1).getSasiedzi().add(v);      //ustawiamy krawedz miedzy wierzcholkami
@@ -123,8 +129,8 @@ public class Ladowacz {
     }
 
     private int[] wczytajWierzcholkiABCD(Scanner scanner, Drzewo drzewo) {
+        stringBuilder.append("ab, cd:");
         int[] abcd = new int[4];
-        System.out.println("abcd:");
         for (int i = 0; i < 4; i+=2) {
             int[] paraWierzcholkow = wczytajPareWierzcholkowABLubCD(scanner, drzewo);
             abcd[i] = paraWierzcholkow[0];
@@ -151,9 +157,9 @@ public class Ladowacz {
                     + licznikDrzewPlikuWejsciowego +". Linia: " + licznikLiniiPlikuWejsciowego + ".");
             System.exit(0);
         }
-        if (scanner.hasNextLine()) scanner.nextLine();
 
-        System.out.println(paraWierzcholkow[0] + " " + paraWierzcholkow[1]);
+        stringBuilder.append(paraWierzcholkow[0] + " " + paraWierzcholkow[1]);
+        if (scanner.hasNextLine()) scanner.nextLine();
         return paraWierzcholkow;
     }
 
@@ -169,10 +175,12 @@ public class Ladowacz {
                     + licznikDrzewPlikuWejsciowego + ". Linia: " + licznikLiniiPlikuWejsciowego + ".");
             System.exit(0);
         }
-        System.out.println("\nStrukturyDanych.Drzewo nr: " + licznikDrzewPlikuWejsciowego);
-        System.out.println("Liczba wierzcholkow drzewa: " + drzewo.getLiczbaWierzcholkow());
+        stringBuilder.append("\nStrukturyDanych.Drzewo nr: " + licznikDrzewPlikuWejsciowego);
+        stringBuilder.append("Liczba wierzcholkow drzewa: " + drzewo.getLiczbaWierzcholkow());
 
         return liczbaWierzcholkow;
     }
+
+    public String getKrokiWczytywania(){ return stringBuilder.toString(); }
 
 }

@@ -1,7 +1,8 @@
 package StrukturyDanych;
 
-import WyznaczanieDrogi.BFS;
+import WyznaczanieDrogi.BFSNajkrotszaDroga;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class DrzewoZRobakiem {
@@ -13,9 +14,7 @@ public class DrzewoZRobakiem {
 
     public DrzewoZRobakiem(Drzewo drzewo, int[] abcd) {
         this.drzewo = drzewo;
-        System.out.println("t2");
-        LinkedList<Integer> wyznaczonyRobak = new BFS(drzewo, abcd[0]).wyznaczNajkrotszaDroge(abcd[1]);
-        System.out.println("t2");
+        LinkedList<Integer> wyznaczonyRobak = new BFSNajkrotszaDroga(drzewo, abcd[0]).wyznaczNajkrotszaDroge(abcd[1]);
         robak = wyznaczonyRobak.stream().mapToInt(e -> e).toArray();
         docelowyPrzod = abcd[2];
         docelowyTyl = abcd[3];
@@ -51,9 +50,9 @@ public class DrzewoZRobakiem {
         docelowyTyl = tmp;
     }
 
-    public boolean czyDotarlTylemDoCelu() { return robak[0] == docelowyTyl ? true : false; }
+    public boolean czyDotarlTylemDoCelu() { return robak[0] == docelowyTyl; }
 
-    public boolean czyDotarlPrzodemDoCelu() { return robak[robak.length-1] == docelowyPrzod ? true : false; }
+    public boolean czyDotarlPrzodemDoCelu() { return robak[robak.length-1] == docelowyPrzod; }
 
     public boolean czyDotarlDoCelu() { return czyDotarlTylemDoCelu() && czyDotarlPrzodemDoCelu(); }
 
@@ -70,4 +69,13 @@ public class DrzewoZRobakiem {
     }
 
     public int[] getRobak() { return robak; }
+
+    public void wypiszRobaka() {
+        System.out.println("Robak: " + Arrays.toString(robak));
+        System.out.println("Docelowy robak: " + docelowyTyl + "..." + docelowyPrzod);
+    }
+
+    public boolean czyRobakLezyNaWierzcholku(int wierzcholek) {
+        return Arrays.stream(robak).anyMatch(w -> w == wierzcholek);
+    }
 }

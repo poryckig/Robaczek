@@ -2,6 +2,7 @@ package Ruchy;
 
 import StrukturyDanych.DrzewoZRobakiem;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class RuchDoPrzodu implements Ruch {
